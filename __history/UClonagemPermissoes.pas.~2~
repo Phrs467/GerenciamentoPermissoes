@@ -1,0 +1,39 @@
+unit UClonagemPermissoes;
+
+interface
+
+type
+  TFuncionario = class(TObject)
+  private
+    { private declarations }
+    FId : Integer;
+    FMatricula : Integer;
+    FNome : String;
+    FDepId : Integer;
+    FSenha: string;
+    FSituacao : String;
+  protected
+    { protected declarations }
+  public
+    { public declarations }
+    Property Id : Integer read FId write FId;
+    Property Matricula : Integer read FMatricula write FMatricula;
+    Property Nome : String read FNome write FNome;
+    Property DepId : Integer read FDepId write FDepId;
+    property Senha: String read FSenha write FSenha;
+    Property Situacao : string read FSituacao write FSituacao;
+
+    Function incluir : boolean;
+    function alterar: Boolean;
+    function excluir: Boolean;
+    function pesquisarId: Boolean;
+
+  published
+    { published declarations }
+  end;
+
+implementation
+
+uses UDmFuncionario, SysUtils;
+
+end.

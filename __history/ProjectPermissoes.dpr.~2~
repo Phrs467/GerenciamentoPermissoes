@@ -1,0 +1,14 @@
+program ProjectPermissoes;
+
+uses
+  Vcl.Forms,
+  UGerenciamentoPermissoes in 'UGerenciamentoPermissoes.pas' {FormGerenciamentoPermissoes};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFormGerenciamentoPermissoes, FormGerenciamentoPermissoes);
+  Application.Run;
+end.

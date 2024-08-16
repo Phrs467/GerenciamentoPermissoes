@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/08/15 14:07:40.000.303,=D:\Pedro\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/08/15 14:08:32.000.001,D:\Pedro\Embarcadero\Studio\Projects\Unit1.pas=D:\Unifan\Projetos de teste\Projeto Permissões\UGerenciamentoPermissoes.pas</Transaction>
+    <Transaction>2024/08/15 14:08:32.000.001,D:\Pedro\Embarcadero\Studio\Projects\Unit1.dfm=D:\Unifan\Projetos de teste\Projeto Permissões\UGerenciamentoPermissoes.dfm</Transaction>
+    <Transaction>2024/08/15 14:08:36.000.812,D:\Pedro\Embarcadero\Studio\Projects\Project1.dproj=D:\Unifan\Projetos de teste\Projeto Permissões\ProjectPermissoes.dproj</Transaction>
+    <Transaction>2024/08/15 14:39:18.982,=D:\Unifan\Projetos de teste\Projeto Permissões\UDBConexao.pas</Transaction>
+    <Transaction>2024/08/15 14:39:21.654,=D:\Unifan\Projetos de teste\Projeto Permissões\UDmFuncionario.pas</Transaction>
+    <Transaction>2024/08/15 14:39:21.839,=D:\Unifan\Projetos de teste\Projeto Permissões\UPesqFuncionario.pas</Transaction>
+    <Transaction>2024/08/15 14:44:14.953,=D:\Unifan\Projetos de teste\ProjetoEstoqueDelphi\ProjetoEstoqueDelphi\UFuncionario.pas</Transaction>
+    <Transaction>2024/08/15 14:44:34.978,D:\Unifan\Projetos de teste\ProjetoEstoqueDelphi\ProjetoEstoqueDelphi\UFuncionario.pas=</Transaction>
+    <Transaction>2024/08/15 14:45:00.926,=D:\Unifan\Projetos de teste\Projeto Permissões\UFuncionario.pas</Transaction>
+    <Transaction>2024/08/15 14:57:48.002,=D:\Unifan\Projetos de teste\Projeto Permissões\Unit1.pas</Transaction>
+    <Transaction>2024/08/15 14:58:04.953,D:\Unifan\Projetos de teste\Projeto Permissões\UClonagemPermissoes.pas=D:\Unifan\Projetos de teste\Projeto Permissões\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
