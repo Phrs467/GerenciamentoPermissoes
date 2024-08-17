@@ -13,7 +13,7 @@ object FormGerenciamentoPermissoes: TFormGerenciamentoPermissoes
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object PanelTitulo: TPanel
     Left = 0
     Top = 0
     Width = 828
@@ -30,26 +30,26 @@ object FormGerenciamentoPermissoes: TFormGerenciamentoPermissoes
     ParentFont = False
     TabOrder = 0
   end
-  object Panel3: TPanel
+  object PanelFundo: TPanel
     Left = 0
     Top = 81
     Width = 828
     Height = 499
     Align = alClient
     TabOrder = 1
-    object Panel2: TPanel
+    object PanelFunEspelho: TPanel
       Left = 8
       Top = 6
       Width = 393
       Height = 483
       Align = alCustom
       TabOrder = 0
-      object SpeedButton1: TSpeedButton
-        Left = 79
+      object SpeedButtonFunEspelho: TSpeedButton
+        Left = 111
         Top = 75
         Width = 23
         Height = 22
-        OnClick = SpeedButton1Click
+        OnClick = SpeedButtonFunEspelhoClick
       end
       object Label1: TLabel
         Left = 24
@@ -64,30 +64,30 @@ object FormGerenciamentoPermissoes: TFormGerenciamentoPermissoes
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object LabeledEditIdFunEspelho: TLabeledEdit
+      object LabeledEditMatFunEspelho: TLabeledEdit
         Left = 24
         Top = 76
-        Width = 49
+        Width = 81
         Height = 21
-        EditLabel.Width = 11
+        EditLabel.Width = 43
         EditLabel.Height = 13
-        EditLabel.Caption = 'ID'
+        EditLabel.Caption = 'Matr'#237'cula'
         TabOrder = 0
       end
       object LabeledEditNomeFuncionario: TLabeledEdit
-        Left = 108
+        Left = 140
         Top = 76
-        Width = 197
+        Width = 237
         Height = 21
         EditLabel.Width = 27
         EditLabel.Height = 13
         EditLabel.Caption = 'Nome'
         TabOrder = 1
       end
-      object Panel5: TPanel
+      object PanelPermissoes: TPanel
         Left = 24
         Top = 120
-        Width = 281
+        Width = 353
         Height = 105
         BevelInner = bvLowered
         TabOrder = 2
@@ -125,19 +125,19 @@ object FormGerenciamentoPermissoes: TFormGerenciamentoPermissoes
         end
       end
     end
-    object Panel4: TPanel
+    object PanelFunClone: TPanel
       Left = 424
       Top = 6
       Width = 393
       Height = 483
       Align = alCustom
       TabOrder = 1
-      object SpeedButton2: TSpeedButton
-        Left = 79
-        Top = 75
+      object SpeedButtonFunClone: TSpeedButton
+        Left = 111
+        Top = 76
         Width = 23
         Height = 22
-        OnClick = SpeedButton2Click
+        OnClick = SpeedButtonFunCloneClick
       end
       object Label2: TLabel
         Left = 24
@@ -152,20 +152,20 @@ object FormGerenciamentoPermissoes: TFormGerenciamentoPermissoes
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object LabeledEditIdFunClone: TLabeledEdit
+      object LabeledEditMatFunClone: TLabeledEdit
         Left = 24
         Top = 76
-        Width = 49
+        Width = 81
         Height = 21
-        EditLabel.Width = 11
+        EditLabel.Width = 43
         EditLabel.Height = 13
-        EditLabel.Caption = 'ID'
+        EditLabel.Caption = 'Matr'#237'cula'
         TabOrder = 0
       end
       object LabeledEditNomeFunClone: TLabeledEdit
-        Left = 108
+        Left = 140
         Top = 76
-        Width = 197
+        Width = 237
         Height = 21
         EditLabel.Width = 27
         EditLabel.Height = 13

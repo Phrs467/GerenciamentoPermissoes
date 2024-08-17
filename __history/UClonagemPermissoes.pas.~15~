@@ -1,0 +1,241 @@
+unit UClonagemPermissoes;
+
+interface
+
+type
+  TClonagemPermissoes = class(TObject)
+  private
+    { private declarations }
+    FId : Integer;
+    FId2 : Integer;
+  protected
+    { protected declarations }
+  public
+    { public declarations }
+    Property Id : Integer read FId write FId;
+    Property Id2 : Integer read FId2 write FId2;
+
+    function ClonagemFinanceiro: Boolean;
+    function ClonagemVestibular: Boolean;
+    function ClonagemAtendimento: Boolean;
+    function ClonagemBiblioteca: Boolean;
+
+  published
+    { published declarations }
+  end;
+
+implementation
+
+uses UDmFuncionario, SysUtils, Vcl.Dialogs;
+
+{ TClonagemPermissoes }
+
+function TClonagemPermissoes.ClonagemAtendimento: Boolean;
+var
+  sqlUpdate, sqlCampos, sqlWhere: string;
+begin
+  Result := True;
+
+  try
+    sqlCampos :=
+      ' UPDATE Funcionarios ' +
+      ' SET PermissoesAtendimento = ' +
+      ' (Select PermissoesAtendimento from Funcionarios where Fun_Id = :Fun_id)';
+
+    sqlWhere := ' WHERE Fun_id = :Fun_id2 ';
+
+    DmFuncionario.qFuncObj.Close;
+
+    DmFuncionario.qFuncObj.SQL.Text :=
+      'SELECT PermissoesFinanceiro FROM Funcionarios WHERE Fun_Id = :Fun_id';
+    DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id').Value := Self.Id;
+
+    DmFuncionario.qFuncObj.Open;
+
+    if not DmFuncionario.qFuncObj.Eof then
+    begin
+      if DmFuncionario.qFuncObj.FieldByName('PermissoesFinanceiro').IsNull then
+      begin
+        ShowMessage('O usuário não possui permissões para o Perfil selecionado');
+        Result := False;
+      end
+      else
+      begin
+        sqlUpdate := sqlCampos + sqlWhere;
+
+        DmFuncionario.qFuncObj.Close;
+        DmFuncionario.qFuncObj.SQL.Text := sqlUpdate;
+        DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id').Value := Self.Id;
+        DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id2').Value := Self.Id2;
+
+        DmFuncionario.qFuncObj.ExecSQL;
+
+        ShowMessage('Clonagem do Atendimento efetuada com sucesso');
+      end;
+    end;
+  except
+    on E: Exception do
+    begin
+      Result := False;
+      raise Exception.Create(E.Message);
+    end;
+  end;
+end;
+
+function TClonagemPermissoes.ClonagemBiblioteca: Boolean;
+var
+  sqlUpdate, sqlCampos, sqlWhere: string;
+begin
+  Result := True;
+
+  try
+    sqlCampos :=
+      ' UPDATE Funcionarios ' +
+      ' SET PermissoesBiblioteca = ' +
+      ' (Select PermissoesBiblioteca from Funcionarios where Fun_Id = :Fun_id)';
+
+    sqlWhere := ' WHERE Fun_id = :Fun_id2 ';
+
+    DmFuncionario.qFuncObj.Close;
+
+    DmFuncionario.qFuncObj.SQL.Text :=
+      'SELECT PermissoesBiblioteca FROM Funcionarios WHERE Fun_Id = :Fun_id';
+    DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id').Value := Self.Id;
+
+    DmFuncionario.qFuncObj.Open;
+
+    if not DmFuncionario.qFuncObj.Eof then
+    begin
+      if DmFuncionario.qFuncObj.FieldByName('PermissoesBiblioteca').IsNull then
+      begin
+        ShowMessage('O usuário não possui permissões para o Perfil selecionado');
+        Result := False;
+      end
+      else
+      begin
+        sqlUpdate := sqlCampos + sqlWhere;
+
+        DmFuncionario.qFuncObj.Close;
+        DmFuncionario.qFuncObj.SQL.Text := sqlUpdate;
+        DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id').Value := Self.Id;
+        DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id2').Value := Self.Id2;
+
+        DmFuncionario.qFuncObj.ExecSQL;
+
+        ShowMessage('Clonagem do Biblioteca efetuada com sucesso');
+      end;
+    end;
+  except
+    on E: Exception do
+    begin
+      Result := False;
+      raise Exception.Create(E.Message);
+    end;
+  end;
+end;
+
+function TClonagemPermissoes.ClonagemFinanceiro: Boolean;
+var
+  sqlUpdate, sqlCampos, sqlWhere: string;
+begin
+  Result := True;
+
+  try
+    sqlCampos :=
+      ' UPDATE Funcionarios ' +
+      ' SET PermissoesFinanceiro = ' +
+      ' (Select PermissoesFinanceiro from Funcionarios where Fun_Id = :Fun_id)';
+
+    sqlWhere := ' WHERE Fun_id = :Fun_id2 ';
+
+    DmFuncionario.qFuncObj.Close;
+
+    DmFuncionario.qFuncObj.SQL.Text :=
+      'SELECT PermissoesFinanceiro FROM Funcionarios WHERE Fun_Id = :Fun_id';
+    DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id').Value := Self.Id;
+
+    DmFuncionario.qFuncObj.Open;
+
+    if not DmFuncionario.qFuncObj.Eof then
+    begin
+      if DmFuncionario.qFuncObj.FieldByName('PermissoesFinanceiro').IsNull then
+      begin
+        ShowMessage('O usuário não possui permissões para o Perfil selecionado');
+        Result := False;
+      end
+      else
+      begin
+        sqlUpdate := sqlCampos + sqlWhere;
+
+        DmFuncionario.qFuncObj.Close;
+        DmFuncionario.qFuncObj.SQL.Text := sqlUpdate;
+        DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id').Value := Self.Id;
+        DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id2').Value := Self.Id2;
+
+        DmFuncionario.qFuncObj.ExecSQL;
+
+        ShowMessage('Clonagem do Financeiro efetuada com sucesso');
+      end;
+    end;
+  except
+    on E: Exception do
+    begin
+      Result := False;
+      raise Exception.Create(E.Message);
+    end;
+  end;
+end;
+
+function TClonagemPermissoes.ClonagemVestibular: Boolean;
+var
+  sqlUpdate, sqlCampos, sqlWhere: string;
+begin
+  Result := True;
+
+  try
+    sqlCampos :=
+      ' UPDATE Funcionarios ' +
+      ' SET PermissoesVestibular = ' +
+      ' (Select PermissoesVestibular from Funcionarios where Fun_Id = :Fun_id)';
+
+    sqlWhere := ' WHERE Fun_id = :Fun_id2 ';
+
+    DmFuncionario.qFuncObj.Close;
+
+    DmFuncionario.qFuncObj.SQL.Text :=
+      'SELECT PermissoesVestibular FROM Funcionarios WHERE Fun_Id = :Fun_id';
+    DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id').Value := Self.Id;
+
+    DmFuncionario.qFuncObj.Open;
+
+    if not DmFuncionario.qFuncObj.Eof then
+    begin
+      if DmFuncionario.qFuncObj.FieldByName('PermissoesVestibular').IsNull then
+      begin
+        ShowMessage('O usuário não possui permissões para o Perfil selecionado');
+        Result := False;
+      end
+      else
+      begin
+        sqlUpdate := sqlCampos + sqlWhere;
+
+        DmFuncionario.qFuncObj.Close;
+        DmFuncionario.qFuncObj.SQL.Text := sqlUpdate;
+        DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id').Value := Self.Id;
+        DmFuncionario.qFuncObj.Parameters.ParamByName('Fun_id2').Value := Self.Id2;
+
+        DmFuncionario.qFuncObj.ExecSQL;
+
+        ShowMessage('Clonagem do Vestibular efetuada com sucesso');
+      end;
+    end;
+  except
+    on E: Exception do
+    begin
+      Result := False;
+      raise Exception.Create(E.Message);
+    end;
+  end;
+end;
+
+end.

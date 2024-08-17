@@ -29,7 +29,7 @@ type
   public
     { Public declarations }
     FrmNomeFuncionario  : string;
-    FrmIdFuncionario    : Integer;
+    FrmMatriculaFuncionario    : Integer;
   end;
 
 type
@@ -113,11 +113,11 @@ end;
 
 procedure TFormPesqFunc.BtSelecionarClick(Sender: TObject);
 begin
-  FrmIdFuncionario := 0;
+  FrmMatriculaFuncionario := 0;
   FrmNomeFuncionario := '';
   if not DmFuncionario.qPesqFuncionario.IsEmpty then
   begin
-     FrmIdFuncionario := DmFuncionario.qPesqFuncionarioFun_id.AsInteger;
+     FrmMatriculaFuncionario := DmFuncionario.qPesqFuncionarioFun_Matricula.AsInteger;
      FrmNomeFuncionario := DmFuncionario.qPesqFuncionarioFun_Nome.AsString;
   end;
   Self.Close;

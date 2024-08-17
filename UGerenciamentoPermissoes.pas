@@ -8,26 +8,26 @@ uses
 
 type
   TFormGerenciamentoPermissoes = class(TForm)
-    Panel1: TPanel;
-    Panel2: TPanel;
-    LabeledEditIdFunEspelho: TLabeledEdit;
-    SpeedButton1: TSpeedButton;
+    PanelTitulo: TPanel;
+    PanelFunEspelho: TPanel;
+    LabeledEditMatFunEspelho: TLabeledEdit;
+    SpeedButtonFunEspelho: TSpeedButton;
     LabeledEditNomeFuncionario: TLabeledEdit;
     Label1: TLabel;
-    Panel3: TPanel;
-    Panel4: TPanel;
-    SpeedButton2: TSpeedButton;
+    PanelFundo: TPanel;
+    PanelFunClone: TPanel;
+    SpeedButtonFunClone: TSpeedButton;
     Label2: TLabel;
-    LabeledEditIdFunClone: TLabeledEdit;
+    LabeledEditMatFunClone: TLabeledEdit;
     LabeledEditNomeFunClone: TLabeledEdit;
     ButtonClonagemPerfil: TButton;
     CheckBoxFinanceiro: TCheckBox;
-    Panel5: TPanel;
+    PanelPermissoes: TPanel;
     CheckBoxBiblioteca: TCheckBox;
     CheckBoxVestibular: TCheckBox;
     CheckBoxAtendimento: TCheckBox;
-    procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButtonFunEspelhoClick(Sender: TObject);
+    procedure SpeedButtonFunCloneClick(Sender: TObject);
     procedure ButtonClonagemPerfilClick(Sender: TObject);
   private
     { Private declarations }
@@ -51,43 +51,39 @@ procedure TFormGerenciamentoPermissoes.ButtonClonagemPerfilClick(
 var
   PerfilEspelho, PerfilClone : Integer;
 begin
-  PerfilEspelho := StrToInt(LabeledEditIdFunEspelho.Text);
-  PerfilClone := StrToInt(LabeledEditIdFunClone.Text);
+  PerfilEspelho := StrToInt(LabeledEditMatFunEspelho.Text);
+  PerfilClone := StrToInt(LabeledEditMatFunClone.Text);
 
   ClonagemPermissoes := TClonagemPermissoes.Create;
 
-  if LabeledEditIdFunEspelho.Text <> '' then
+  if LabeledEditMatFunEspelho.Text <> '' then
   begin
-    ClonagemPermissoes.Id := PerfilEspelho;
+    ClonagemPermissoes.Matricula := PerfilEspelho;
   end;
 
-  if LabeledEditIdFunClone.Text <> '' then
+  if LabeledEditMatFunClone.Text <> '' then
   begin
-    ClonagemPermissoes.Id2 := PerfilClone;
+    ClonagemPermissoes.Matricula2 := PerfilClone;
   end;
 
   if CheckBoxFinanceiro.Checked = true then
   begin
     ClonagemPermissoes.ClonagemFinanceiro;
-    ShowMessage('Clonagem do Financeiro efetuada com sucesso');
   end;
 
   if CheckBoxBiblioteca.Checked = true then
   begin
     ClonagemPermissoes.ClonagemBiblioteca;
-    ShowMessage('Clonagem do Biblioteca efetuada com sucesso');
   end;
 
   if CheckBoxAtendimento.Checked = true then
   begin
     ClonagemPermissoes.ClonagemAtendimento;
-
   end;
 
   if CheckBoxVestibular.Checked = true then
   begin
     ClonagemPermissoes.ClonagemVestibular;
-    ShowMessage('Clonagem do Vestibular efetuada com sucesso');
   end;
 
   ClonagemPermissoes.Free;
@@ -95,15 +91,15 @@ end;
 
 procedure TFormGerenciamentoPermissoes.PesquisarFuncionario;
 begin
-  if LabeledEditIdFunEspelho.Text <> '' then
+  if LabeledEditMatFunEspelho.Text <> '' then
   begin
 
     Funcionario := TFuncionario.Create;
-    Funcionario.Id := StrToInt(LabeledEditIdFunEspelho.Text);
+    Funcionario.Matricula := StrToInt(LabeledEditMatFunEspelho.Text);
 
     if Funcionario.pesquisarId then
     begin
-      LabeledEditIdFunEspelho.Text := IntToStr(Funcionario.Id);
+      LabeledEditMatFunEspelho.Text := IntToStr(Funcionario.Matricula);
       LabeledEditNomeFuncionario.Text := Funcionario.Nome;
     end
     else
@@ -114,15 +110,14 @@ begin
     Funcionario.Free;
   end;
 
-  if LabeledEditIdFunClone.Text <> '' then
+  if LabeledEditMatFunClone.Text <> '' then
   begin
-
     Funcionario := TFuncionario.Create;
-    Funcionario.Id := StrToInt(LabeledEditIdFunClone.Text);
+    Funcionario.Matricula := StrToInt(LabeledEditMatFunClone.Text);
 
     if Funcionario.pesquisarId then
     begin
-      LabeledEditIdFunClone.Text := IntToStr(Funcionario.Id);
+      LabeledEditMatFunClone.Text := IntToStr(Funcionario.Matricula);
       LabeledEditNomeFunClone.Text := Funcionario.Nome;
     end
     else
@@ -131,27 +126,25 @@ begin
     end;
 
     Funcionario.Free;
-
   end;
-
 end;
 
-procedure TFormGerenciamentoPermissoes.SpeedButton1Click(Sender: TObject);
+procedure TFormGerenciamentoPermissoes.SpeedButtonFunEspelhoClick(Sender: TObject);
 begin
  FormPesqFunc.ShowModal;
-  if FormPesqFunc.FrmIdFuncionario > 0 then
+  if FormPesqFunc.FrmMatriculaFuncionario > 0 then
   begin
-    LabeledEditIdFunEspelho.Text := IntToStr(FormPesqFunc.FrmIdFuncionario);
+    LabeledEditMatFunEspelho.Text := IntToStr(FormPesqFunc.FrmMatriculaFuncionario);
     PesquisarFuncionario;
   end;
 end;
 
-procedure TFormGerenciamentoPermissoes.SpeedButton2Click(Sender: TObject);
+procedure TFormGerenciamentoPermissoes.SpeedButtonFunCloneClick(Sender: TObject);
 begin
  FormPesqFunc.ShowModal;
-  if FormPesqFunc.FrmIdFuncionario > 0 then
+  if FormPesqFunc.FrmMatriculaFuncionario > 0 then
   begin
-    LabeledEditIdFunClone.Text := IntToStr(FormPesqFunc.FrmIdFuncionario);
+    LabeledEditMatFunClone.Text := IntToStr(FormPesqFunc.FrmMatriculaFuncionario);
     PesquisarFuncionario;
   end;
 end;
