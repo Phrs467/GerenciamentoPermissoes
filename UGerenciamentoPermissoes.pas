@@ -26,6 +26,9 @@ type
     CheckBoxBiblioteca: TCheckBox;
     CheckBoxVestibular: TCheckBox;
     CheckBoxAtendimento: TCheckBox;
+    CheckBoxControladoria: TCheckBox;
+    CheckBoxContasAPagar: TCheckBox;
+    CheckBoxTesouraria: TCheckBox;
     procedure SpeedButtonFunEspelhoClick(Sender: TObject);
     procedure SpeedButtonFunCloneClick(Sender: TObject);
     procedure ButtonClonagemPerfilClick(Sender: TObject);
@@ -84,6 +87,21 @@ begin
   if CheckBoxVestibular.Checked = true then
   begin
     ClonagemPermissoes.ClonagemVestibular;
+  end;
+
+  if CheckBoxControladoria.Checked = true then
+  begin
+    ClonagemPermissoes.ClonagemControladoria;
+  end;
+
+  if CheckBoxContasAPagar.Checked = true then
+  begin
+    ClonagemPermissoes.ClonagemContasAPagar;
+  end;
+
+  if CheckBoxTesouraria.Checked = true then
+  begin
+    ClonagemPermissoes.ClonagemTesouraria;
   end;
 
   ClonagemPermissoes.Free;

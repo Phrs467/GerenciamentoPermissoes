@@ -123,6 +123,30 @@ object FormGerenciamentoPermissoes: TFormGerenciamentoPermissoes
           Caption = 'Permiss'#245'es Atendimento'
           TabOrder = 3
         end
+        object CheckBoxControladoria: TCheckBox
+          Left = 184
+          Top = 9
+          Width = 137
+          Height = 17
+          Caption = 'Permiss'#245'es Controladoria'
+          TabOrder = 4
+        end
+        object CheckBoxContasAPagar: TCheckBox
+          Left = 184
+          Top = 32
+          Width = 153
+          Height = 17
+          Caption = 'Permiss'#245'es Contas a Pagar'
+          TabOrder = 5
+        end
+        object CheckBoxTesouraria: TCheckBox
+          Left = 184
+          Top = 55
+          Width = 137
+          Height = 17
+          Caption = 'Permiss'#245'es Tesouraria'
+          TabOrder = 6
+        end
       end
     end
     object PanelFunClone: TPanel
